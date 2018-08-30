@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-contianer">
+  <div class="navigation-contianer" :class="{bright: bright}" :style="navigationStyle">
     <div class="navigation-top"></div>
     <div class="navigation-bottom">
       <div class="navigation-side-container">
@@ -15,16 +15,42 @@
   </div>
 </template>
 
+<script>
+  export default {
+    props: {
+      bright: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data: function () {
+      return {
+        navigationStyle: {
+          // backgroundColor: 'red'
+        }
+      }
+    }
+  }
+</script>
+
 <style lang="scss" scoped>
+
+@import '../../assets/style/layout.scss';
+
 .navigation-contianer {
   width: 100%;
+  border-bottom: solid 0.0625rem $lineColor;
+  background-color: $navigationColor;
+}
+.bright {
+  background-color: $red;
 }
 .navigation-top {
-  height: 2rem;
+  height: 1.25rem;
   width: 100%;
 }
 .navigation-bottom {
-  height: 4.4rem;
+  height: 2.75rem;
   width: 100%;
 }
 .navigation-side-container {

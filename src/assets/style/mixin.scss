@@ -1,3 +1,17 @@
-@mixin button {
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
 
+@mixin button($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin radiusButton($width, $height, $radius) {
+  @include button($width, $height);
+  @include borderRadius($radius);
 }
