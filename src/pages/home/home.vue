@@ -1,16 +1,25 @@
 <template>
-    <div>
-    </div>
+  <div>
+    <navigation-bar navigation-title="首页" go-back="true" search="搜索">
+      <!-- <search-bar name="searchBar"></search-bar> -->
+    </navigation-bar>
+  </div>
 </template>
 
 <script>
-export default {
-    name: 'Home',
-    data: function() {
-        return {
 
-        }
-    },
-}
+import NavigationBar from '../../components/header/navigation-bar'
+import SearchBar  from '../../components/header/search-bar'
+
+export default {
+  name: "Home",
+  components: {
+    NavigationBar,
+    SearchBar
+  },
+  data: function() {
+    return {};
+  }
+};
 </script>
 
