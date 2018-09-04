@@ -26,7 +26,6 @@
     data: function () {
       return {
         navigationStyle: {
-          // backgroundColor: 'red'
         }
       }
     }
@@ -39,11 +38,12 @@
 
 .navigation-contianer {
   width: 100%;
-  border-bottom: solid 0.0625rem $lineColor;
+  border-bottom: solid $lineHeight $lineColor;
   background-color: $navigationColor;
 }
 .bright {
   background-color: $red;
+  border-bottom: solid 0 $lineColor;
 }
 .navigation-top {
   height: 1.25rem;

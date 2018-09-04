@@ -16,7 +16,7 @@
         <div v-if="centerBarStyle === 'title'">
           <span class="navigation-title" :style="{color: bright ? '#fff': $textColor}">{{navigationTitle}}</span>
         </div>
-        <div v-else-if="centerBarStyle === 'input'">
+        <div class="input-bar" v-else-if="centerBarStyle === 'input'">
           <input-bar placeholder="找影视剧、影人、影院、演员、..."></input-bar>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <img class="navigation-search" src='../../assets/images/share.png' v-else-if="rightButtonStyle === 'share'"/>
         <img class="navigation-search" src='../../assets/images/collection.png' v-else-if="rightButtonStyle === 'collection'"/>
         <div class="sign-container" v-else-if="rightButtonStyle === 'sign'">
-          <div class="sign-background-image"><span class="sign-text">30</span></div>
+          <div class="sign-background-image"><span class="sign-text">{{day}}</span></div>
         </div>
       </div>
     </navigation-container>
@@ -64,7 +64,9 @@ export default {
     }
   },
   data: function () {
-    return {}
+    return {
+      day: (new Date()).getDate()
+    }
   },
   methods: {
     onLeftButtonClick: function(e) {},
@@ -117,15 +119,14 @@ export default {
 .sign-background-image {
   background-image: url('../../assets/images/calendar.png');
   background-size: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.4rem;
+  height: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .sign-text {
   color: $red;
-  background-color: #fff;
   font-size: 0.5rem;
 }
 .location-text {
@@ -134,6 +135,10 @@ export default {
   white-space: nowrap;
   color: #fff;
   font-size: 1rem;
+  flex: 1;
+}
+.input-bar {
+  display: flex;
   flex: 1;
 }
 </style>

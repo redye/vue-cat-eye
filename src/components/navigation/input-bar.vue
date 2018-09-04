@@ -42,12 +42,14 @@ export default {
   height: 2rem;
   margin: 0 0.5rem;
   display: flex;
+  flex: 1;
   align-items: center;
   @include borderRadius(1rem);
   overflow: hidden;
   background-color: #fff;
   input {
-    display: inline;
+    display: flex;
+    flex: 1;
     font-size: 1rem;
     line-height: 2rem;
     margin-left: 0.5rem;
