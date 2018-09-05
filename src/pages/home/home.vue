@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100px; background-color: red;">
+  <div>
     <navigation-bar
       :bright="true"
       navigation-title="首页"
@@ -8,7 +8,18 @@
       right-button-style="sign"
     />
     <carrousel :carrousels="carrousels"></carrousel>
-    <tabs></tabs>
+    <tabs :value="currentTabIndex" ref="tabs" show-style="top">
+      <tab
+        v-for="(tab, index) in tabs"
+        :title="tab.title"
+        :selected="tab.selected"
+        :index="index"
+        :key="index"
+        @click="onTabClick"
+      >
+        <div>tab content {{index}}</div>
+      </tab>
+    </tabs>
   </div>
 </template>
 
@@ -18,6 +29,20 @@ export default {
   name: "Home",
   data: function() {
     return {
+      currentTabIndex: 0,
+      tabs: [{
+        title: '电影',
+        selected: true
+      }, {
+        title: '电视剧',
+        selected: false
+      }, {
+        title: '综艺',
+        selected: false
+      }, {
+        title: '书籍',
+        selected: false
+      }],
       carrousels: [{
         "adId":8078,
         "frame":1,
@@ -49,6 +74,15 @@ export default {
         "link":"meituanmovie://www.meituan.com/web?url=http://m.maoyan.com/cinema-on-demand/list",
         "materialId":5492
       }]
+    }
+  },
+  methods: {
+    onTabClick: function (index) {
+      const lastTab = this.tabs[this.currentTabIndex]
+      const currentTab = this.tabs[index]
+      lastTab.selected = false
+      currentTab.selected = true
+      this.currentTabIndex = index
     }
   }
 };

@@ -15,3 +15,17 @@
   @include button($width, $height);
   @include borderRadius($radius);
 }
+
+@mixin animation($animationName, $duration) {
+  animation: $animationName $duration;
+  -moz-animation: $animationName $duration;	/* Firefox */
+  -webkit-animation: $animationName $duration;	/* Safari 和 Chrome */
+  -o-animation: $animationName $duration;
+}
+
+@mixin transition($prop, $duration) {
+  transition: $prop $duration;
+  -moz-transition: $prop $duration;
+  -webkit-transition: $prop $duration;
+  -o-transition: $prop $duration;
+}
