@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     onValueChanged: function (e) {
-      // this.value = e.target.value
       console.log(`value => ${this.value}`)
     },
     onInputFocus: function() {

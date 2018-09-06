@@ -2,7 +2,7 @@
   <div class="banner-container">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(slide, index) in carrousels" :key="index">
-        <img class="car-image" :src="slide.image" />
+        <img class="car-image" :src="slide.image" @click="onClick(index)" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     onClick: function (index) {
-      console.log(`onTap ==> ${index}`)
+      this.$emit('click', index)
     }
   }
 }

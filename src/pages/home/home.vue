@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%;">
     <navigation-bar
       :bright="true"
       navigation-title="首页"
@@ -7,7 +7,7 @@
       left-button-style="location"
       right-button-style="sign"
     />
-    <carrousel :carrousels="carrousels"></carrousel>
+    <carrousel :carrousels="carrousels" @click="onCarrouselClick"></carrousel>
     <tabs :value="currentTabIndex" ref="tabs" show-style="top">
       <tab
         v-for="(tab, index) in tabs"
@@ -17,7 +17,6 @@
         :key="index"
         @click="onTabClick"
       >
-        <div>tab content {{index}}</div>
       </tab>
     </tabs>
   </div>
@@ -83,6 +82,21 @@ export default {
       lastTab.selected = false
       currentTab.selected = true
       this.currentTabIndex = index
+    },
+    onCarrouselClick: function(index) {
+      const link = this.carrousels[index].link;
+      console.log(`link ==> ${link}`)
+      // this.$router.push('/movie?id=123')
+      // this.$routerV2(link)
+      // this.$router.push({
+      //   path: '/movie',
+      //   query: {
+      //     id: '124',
+      //     nm: 'afadd'
+      //   }
+      // })
+      // this.$router.push('/movie?id=123')
+      this.$router.push(link)
     }
   }
 };

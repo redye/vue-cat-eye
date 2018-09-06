@@ -69,8 +69,14 @@ export default {
     }
   },
   methods: {
-    onLeftButtonClick: function(e) {},
-    onRightButtonClick: function(e) {}
+    onLeftButtonClick: function(e) {
+      e.preventDefault()
+      console.log(`left nav button click`)
+    },
+    onRightButtonClick: function(e) {
+      e.preventDefault()
+      console.log(`right nav button click`)
+    }
   }
 }
 </script>

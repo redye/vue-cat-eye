@@ -15,3 +15,46 @@
 	```
 	useEslint: false,
 	```
+
+## vue-router 参数传递
+* `props: true` 模式
+	
+	如果 props 被设置为 true，route.params 将会被设置为组件属性
+	
+	适合 `path: '/user/:id'`
+	
+* `props: Object` 模式
+	
+	如果 props 是一个对象，它会被按原样设置为组件属性。当 props 是静态的时候有用。
+	
+	```
+	{
+	    path: '/movie',
+	    name: 'movie',
+	    props: {
+	    	title: '电影'
+	    },
+	    component: () => import(/* webpackChunkName: "movie-view" */ '../pages/movie/movie.vue')
+	}
+	```
+	
+* `props: function` 模式
+	
+	当路由方式为 `/user?id=123` 时，如果希望将链接里面的 `query` 对应到组件内部定义的属性上面，可以使用这种模式	
+	
+	```
+	const parseRoute = (route) => {
+	  const keys = Object.keys(route.query)
+	  if (keys && keys.length > 0) {
+	    return route.query
+	  }
+	  return route.params
+	}
+	
+	{
+	    path: '/movie',
+	    name: 'movie',
+	    props: parseRoute,
+	    component: () => import(/* webpackChunkName: "movie-view" */ '../pages/movie/movie.vue')
+	}
+	```	
